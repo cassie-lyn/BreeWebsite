@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import { SITE, withBase } from '../config';
+
+const title = 'Thank You | Happy Horses RI';
+const description = 'Your booking request has been sent. Bree will be in touch soon.';
+---
+
+<BaseLayout title={title} description={description} noindex={true}>
+  <section class="mx-auto flex max-w-2xl flex-col items-center px-5 py-24 text-center lg:py-32">
+    <div class="flex h-20 w-20 items-center justify-center rounded-full bg-sage-100">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#2E4A3B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+        <polyline points="22 4 12 14.01 9 11.01" />
+      </svg>
+    </div>
+
+    <h1 class="mt-8 font-display text-4xl font-semibold text-pine sm:text-5xl">Thank you!</h1>
+    <p class="mt-5 text-lg leading-relaxed text-charcoal-600">
+      Your request is on its way. Bree will get back to you soon to talk through your animal’s needs
+      and find a time that works. Keep an eye on your email or phone.
+    </p>
+
+    {
+      SITE.phoneHref && (
+        <p class="mt-6 text-charcoal-600">
+          Need to reach her sooner? Call or text
+          <a href={SITE.phoneHref} class="font-semibold text-pine underline decoration-saddle underline-offset-2 hover:text-saddle">{SITE.phone}</a>
+          or email
+          <a href={SITE.emailHref} class="font-semibold text-pine underline decoration-saddle underline-offset-2 hover:text-saddle">{SITE.email}</a>.
+        </p>
+      )
+    }
+
+    <div class="mt-10 flex flex-wrap justify-center gap-4">
+      <Button href={withBase('/')}>Back to home</Button>
+      <Button href={withBase('/pemf')} variant="outline">Learn more about PEMF</Button>
+    </div>
+  </section>
+</BaseLayout>

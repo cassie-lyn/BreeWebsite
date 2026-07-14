@@ -1,0 +1,35 @@
+---
+import Button from './Button.astro';
+import Badge from './Badge.astro';
+import { SITE, withBase } from '../config';
+
+interface Props {
+  title?: string;
+  text?: string;
+}
+const {
+  title = 'Ready to help your animal feel their best?',
+  text = "Book a session or reach out with questions — I'm happy to talk through what PEMF could do for your horse or dog.",
+} = Astro.props;
+---
+
+<section class="bg-pine">
+  <div class="mx-auto max-w-4xl px-5 py-16 text-center sm:py-20">
+    <Badge variant="dark" class="mb-6">Now Accepting New Clients</Badge>
+    <h2 class="font-display text-3xl font-semibold text-cream sm:text-4xl">{title}</h2>
+    <p class="mx-auto mt-4 max-w-xl leading-relaxed text-cream/80">{text}</p>
+    <div class="mt-8 flex flex-wrap justify-center gap-4">
+      <Button href={withBase('/book')} variant="cream" size="lg">Book a Session</Button>
+      {
+        SITE.phoneHref && (
+          <a
+            href={SITE.phoneHref}
+            class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-cream/40 px-8 py-4 text-base font-semibold text-cream transition-colors hover:bg-cream/10"
+          >
+            Call {SITE.phone}
+          </a>
+        )
+      }
+    </div>
+  </div>
+</section>

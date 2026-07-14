@@ -1,0 +1,240 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../components/BaseLayout.astro';
+import Badge from '../components/Badge.astro';
+import Button from '../components/Button.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
+import PulseDivider from '../components/PulseDivider.astro';
+import MagnaWaveBadge from '../components/MagnaWaveBadge.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { SITE, withBase } from '../config';
+
+import heroImg from '../assets/photos/bree-riding-dezi.jpg';
+import bwBandImg from '../assets/photos/bree-son-horse-bw.jpg';
+import dogImg from '../assets/photos/pemf-dog.jpg';
+
+const title = 'PEMF Therapy for Horses in Rhode Island | Happy Horses RI';
+const description =
+  'MagnaWave-certified PEMF therapy for horses and dogs, brought right to your barn. Mobile wellness across Rhode Island and nearby Massachusetts. Now accepting new clients.';
+
+const benefits = [
+  {
+    title: 'Circulation & recovery',
+    body: 'Supports healthy circulation and the body’s natural recovery after hard work, competition, or time off.',
+  },
+  {
+    title: 'Relaxation & calm',
+    body: 'Most horses settle quickly during a session, softening, licking, and yawning as tension lets go.',
+  },
+  {
+    title: 'Comfort & mobility',
+    body: 'Encourages comfort and a freer, more supple range of motion so your horse can move their best.',
+  },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- HERO -->
+  <section class="bg-cream">
+    <div class="mx-auto grid max-w-6xl items-center gap-10 px-5 py-14 lg:grid-cols-2 lg:py-20">
+      <div>
+        <Badge>Now Accepting New Clients</Badge>
+        <h1 class="mt-5 font-display text-4xl font-semibold leading-[1.08] text-pine sm:text-5xl">
+          Helping horses feel, move, and perform their best
+        </h1>
+        <p class="mt-5 max-w-xl text-lg leading-relaxed text-charcoal-600">
+          {SITE.practitioner} · MagnaWave PEMF — gentle, non-invasive wellness therapy brought right
+          to your barn, across Rhode Island and nearby Massachusetts.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <Button href={withBase('/book')} size="lg">Book a Session</Button>
+          <Button href={withBase('/pemf')} variant="outline" size="lg">What is PEMF?</Button>
+        </div>
+      </div>
+
+      <div class="relative mx-auto w-full max-w-md">
+        <div class="arch-frame border-4 border-white shadow-xl ring-1 ring-sage-200">
+          <Image
+            src={heroImg}
+            alt="Briana Dolbec smiling on horseback aboard a grey horse on a sunny barn lane"
+            widths={[400, 600, 800]}
+            sizes="(max-width: 1024px) 90vw, 440px"
+            class="h-full w-full object-cover"
+            loading="eager"
+          />
+        </div>
+        <div
+          class="absolute -bottom-5 -left-5 hidden rounded-2xl bg-white p-3 shadow-lg ring-1 ring-sage-200 sm:block"
+        >
+          <MagnaWaveBadge size={78} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <section class="border-y border-sage-200 bg-white">
+    <div
+      class="mx-auto grid max-w-6xl gap-6 px-5 py-8 text-center sm:grid-cols-2 lg:grid-cols-4 lg:text-left"
+    >
+      <div class="flex items-center justify-center gap-3 lg:justify-start">
+        <MagnaWaveBadge size={54} class="shrink-0" />
+        <span class="font-semibold text-pine">MagnaWave<br />Certified</span>
+      </div>
+      <div class="flex flex-col items-center justify-center lg:items-start">
+        <span class="font-display text-2xl font-bold text-saddle">5 years</span>
+        <span class="text-sm text-charcoal-600">of PEMF experience with horses</span>
+      </div>
+      <div class="flex flex-col items-center justify-center lg:items-start">
+        <span class="font-display text-2xl font-bold text-saddle">Mobile</span>
+        <span class="text-sm text-charcoal-600">Serving RI &amp; nearby MA</span>
+      </div>
+      <div class="flex flex-col items-center justify-center lg:items-start">
+        <span class="font-display text-2xl font-bold text-saddle">Horses &amp; dogs</span>
+        <span class="text-sm text-charcoal-600">Horses are the specialty</span>
+      </div>
+    </div>
+  </section>
+
+  <PulseDivider class="mt-14" />
+
+  <!-- PEMF TEASER -->
+  <section class="mx-auto max-w-6xl px-5 py-8">
+    <SectionHeading eyebrow="What PEMF can do" title="Gentle support for the whole horse" align="center">
+      <p class="mt-4 text-lg leading-relaxed text-charcoal-600">
+        Pulsed Electromagnetic Field therapy uses gentle pulses to encourage the body’s own
+        processes, helping your horse feel more comfortable, relaxed, and ready to work.
+      </p>
+    </SectionHeading>
+
+    <div class="mt-12 grid gap-6 md:grid-cols-3">
+      {
+        benefits.map((b) => (
+          <div class="rounded-2xl border border-sage-200 bg-white p-7 shadow-sm">
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-sage-100">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2E4A3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 12h4l2 6 4-14 2 8h6" />
+              </svg>
+            </div>
+            <h3 class="mt-5 font-display text-xl font-semibold text-pine">{b.title}</h3>
+            <p class="mt-2 leading-relaxed text-charcoal-600">{b.body}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mt-10 text-center">
+      <Button href={withBase('/pemf')} variant="outline">Learn how PEMF works</Button>
+    </div>
+  </section>
+
+  <!-- B&W EMOTIONAL BAND -->
+  <section class="relative mt-14">
+    <a href={withBase('/about')} class="group block">
+      <div class="relative h-[420px] w-full overflow-hidden sm:h-[480px]">
+        <Image
+          src={bwBandImg}
+          alt="Black-and-white photo of a young boy and a grey horse nose to nose over a pasture fence"
+          widths={[768, 1200, 1536]}
+          sizes="100vw"
+          class="h-full w-full object-cover object-center grayscale"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-pine/85 via-pine/45 to-pine/20"></div>
+        <div
+          class="absolute inset-0 flex flex-col items-center justify-center px-6 text-center text-cream"
+        >
+          <p class="max-w-2xl font-display text-2xl font-medium leading-snug sm:text-4xl">
+            “A lifelong love of animals at the heart of it all.”
+          </p>
+          <span
+            class="mt-6 inline-flex items-center gap-2 border-b-2 border-cream/50 pb-1 text-base font-bold uppercase tracking-widest transition-colors group-hover:border-saddle group-hover:text-saddle sm:text-lg"
+          >
+            Meet Bree
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
+            </svg>
+          </span>
+        </div>
+      </div>
+    </a>
+  </section>
+
+  <!-- CANINE CALLOUT -->
+  <section class="mx-auto max-w-6xl px-5 py-16 lg:py-20">
+    <div class="grid items-center gap-10 lg:grid-cols-2">
+      <div class="order-2 lg:order-1">
+        <p class="text-sm font-bold uppercase tracking-widest text-saddle">Dogs welcome too</p>
+        <h2 class="mt-2 font-display text-3xl font-semibold text-pine sm:text-4xl">
+          Horses are the specialty — dogs are welcome too
+        </h2>
+        <p class="mt-4 text-lg leading-relaxed text-charcoal-600">
+          The same gentle therapy can help your dog feel more comfortable and move more easily. PEMF
+          for dogs can support:
+        </p>
+        <ul class="mt-5 space-y-3 text-charcoal">
+          {
+            [
+              'Everyday comfort and relief from nagging aches',
+              'Calm, settled relaxation',
+              'A freer, easier range of motion',
+              'Recovery support after surgery or injury',
+              'Extra care for senior dogs and weight-related joint stress',
+            ].map((item) => (
+              <li class="flex items-start gap-3">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B07D4F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 shrink-0" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span>{item}</span>
+              </li>
+            ))
+          }
+        </ul>
+        <div class="mt-8">
+          <Button href={withBase('/services')} variant="outline">Canine sessions &amp; pricing</Button>
+        </div>
+      </div>
+
+      <div class="order-1 lg:order-2">
+        <div class="mx-auto max-w-md overflow-hidden rounded-2xl border-4 border-white shadow-lg ring-1 ring-sage-200">
+          <Image
+            src={dogImg}
+            alt="A dog receiving a calm PEMF therapy session"
+            widths={[374, 600]}
+            sizes="(max-width: 1024px) 90vw, 400px"
+            class="h-full w-full object-cover"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="bg-white">
+    <div class="mx-auto max-w-6xl px-5 py-16 lg:py-20">
+      <SectionHeading eyebrow="Kind words" title="What horse owners are saying" align="center" />
+      <!-- First testimonial is real (Cassie Galli). The PLACEHOLDER TESTIMONIALS below get replaced with real quotes once Bree collects them. -->
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        <TestimonialCard author="Cassie Galli" location="Avastar Dressage · Lincoln, RI">
+          PEMF with Bree has truly helped my FEI dressage horse, Scotty, reach the next level in
+          his training. He’s noticeably more comfortable and supple through the upper-level
+          movements. And Scotty loves his sessions with Bree, to the point where he’s so relaxed
+          he’s practically falling asleep in every one.
+        </TestimonialCard>
+        <TestimonialCard author="Placeholder client name" location="Barn / town, RI">
+          So easy to work with, and great with the horses. She took her time and explained
+          everything. We’ve made PEMF part of our regular routine.
+        </TestimonialCard>
+        <TestimonialCard author="Placeholder client name" location="Barn / town, RI">
+          My senior mare seemed more comfortable and moved more freely afterward. I’m thrilled to
+          have found a mobile practitioner who comes right to our barn.
+        </TestimonialCard>
+      </div>
+      <p class="mt-6 text-center text-xs italic text-charcoal-600">
+        Some testimonials shown are placeholders and will be replaced with real client reviews.
+      </p>
+    </div>
+  </section>
+
+  <CtaBand />
+</BaseLayout>

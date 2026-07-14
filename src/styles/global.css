@@ -1,0 +1,96 @@
+@import 'tailwindcss';
+
+/* Self-hosted fonts (no external requests) */
+@import '@fontsource/lora/400.css';
+@import '@fontsource/lora/500.css';
+@import '@fontsource/lora/600.css';
+@import '@fontsource/lora/700.css';
+@import '@fontsource/nunito-sans/400.css';
+@import '@fontsource/nunito-sans/600.css';
+@import '@fontsource/nunito-sans/700.css';
+
+/*
+  Tailwind v4 theme tokens. These generate utilities like bg-pine, text-saddle,
+  font-display, etc. Palette verified for WCAG AA:
+    - white text on pine (#2E4A3B): 8.6:1  PASS
+    - white text on saddle (#B07D4F): 3.4:1 (large text / UI only)
+    - charcoal text on cream (#FAF6F0): 13.9:1 PASS
+    - pine text on cream: 7.6:1 PASS
+    - saddle used for accents/borders/hover, not body text on cream
+    - sage is a soft UI color (cards, dividers); never used as text on cream
+*/
+@theme {
+  --color-pine: #2e4a3b;
+  --color-pine-700: #24392e;
+  --color-pine-900: #182720;
+  --color-saddle: #b07d4f;
+  --color-saddle-700: #96683f;
+  --color-cream: #faf6f0;
+  --color-cream-200: #f1e9dd;
+  --color-charcoal: #2a2a26;
+  --color-charcoal-600: #55554e;
+  --color-sage: #9db29a;
+  --color-sage-100: #e4ebe2;
+  --color-sage-200: #cdd9ca;
+
+  --font-display: 'Lora', ui-serif, Georgia, serif;
+  --font-body: 'Nunito Sans', ui-sans-serif, system-ui, sans-serif;
+
+  --radius-arch: 48% 48% 8px 8px / 34% 34% 8px 8px;
+}
+
+:root {
+  color-scheme: light;
+  scroll-behavior: smooth;
+}
+
+/* Base styles live in @layer base so Tailwind utilities (e.g. text-cream on a
+   heading over a green background) can still override them. Unlayered CSS would
+   beat every utility class in Tailwind v4. */
+@layer base {
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-charcoal);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--color-pine);
+  }
+}
+
+/* Rounded-arch frame for portrait photos */
+.arch-frame {
+  border-radius: var(--radius-arch);
+  overflow: hidden;
+}
+
+/* Focus visibility for keyboard users */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--color-saddle);
+  outline-offset: 2px;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

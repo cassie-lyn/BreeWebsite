@@ -1,0 +1,238 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../components/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import PulseDivider from '../components/PulseDivider.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { withBase } from '../config';
+
+import siImg from '../assets/photos/pemf-si.jpg';
+import backImg from '../assets/photos/pemf-back.jpg';
+import shoulderImg from '../assets/photos/pemf-shoulder.jpg';
+import scottyShoulderImg from '../assets/photos/scotty-pemf-shoulder.jpg';
+import si2Img from '../assets/photos/pemf-si2.jpg';
+
+const title = 'What is PEMF Therapy? | Happy Horses RI';
+const description =
+  'A plain-language guide to PEMF (Pulsed Electromagnetic Field) therapy for horses and dogs — what it is, what a session looks like, the benefits, and answers to common questions.';
+
+const horseBenefits = [
+  'Supports healthy circulation and post-work recovery',
+  'Encourages relaxation and helps release tension',
+  'Promotes comfort and a freer range of motion',
+  'A calming complement to your horse’s regular care and conditioning',
+];
+
+const dogBenefits = [
+  'Everyday comfort and relief from nagging aches',
+  'Calm, settled relaxation',
+  'Improved, easier range of motion',
+  'Recovery support after surgery or injury',
+  'Extra care for senior dogs and weight-related joint stress',
+];
+
+const gallery = [
+  { src: backImg, alt: 'PEMF loop positioned along a horse’s back during a session' },
+  { src: shoulderImg, alt: 'PEMF therapy applied to a horse’s shoulder' },
+  { src: scottyShoulderImg, alt: 'A horse standing calmly during a shoulder PEMF treatment' },
+  { src: si2Img, alt: 'PEMF therapy over a horse’s hindquarters and SI region' },
+];
+
+const faqs = [
+  {
+    q: 'Is PEMF safe for my animal?',
+    a: 'PEMF is non-invasive and generally very well tolerated, and most horses relax deeply during a session. As with any wellness service, there are some situations where it isn’t appropriate (for example, animals that are pregnant or have certain implanted devices). Bree will always ask a few questions first, and when in doubt, checking with your veterinarian is the right call.',
+  },
+  {
+    q: 'How many sessions will my horse need?',
+    a: 'It depends on the animal and your goals. Some owners book a single session for general relaxation and recovery; others prefer a short series or an ongoing routine as part of their horse’s regular care. Bree is happy to talk through a plan that fits your horse and your budget.',
+  },
+  {
+    q: 'Does PEMF replace my veterinarian?',
+    a: 'No, and it shouldn’t. PEMF is a complementary wellness service, not a diagnosis or medical treatment. It works best alongside good veterinary care, farrier work, and conditioning. Always consult your vet for injuries, illness, or anything that concerns you.',
+  },
+  {
+    q: 'What does my horse need to do beforehand?',
+    a: 'Very little. A clean, dry coat and a quiet spot to stand — a stall or the crossties both work well. Bree brings everything else and comes right to your barn.',
+  },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- HERO -->
+  <section class="bg-cream">
+    <div class="mx-auto grid max-w-6xl items-center gap-10 px-5 py-14 lg:grid-cols-2 lg:py-20">
+      <div>
+        <p class="text-sm font-bold uppercase tracking-widest text-saddle">PEMF Therapy</p>
+        <h1 class="mt-2 font-display text-4xl font-semibold leading-[1.08] text-pine sm:text-5xl">
+          Gentle pulses, real relaxation
+        </h1>
+        <p class="mt-5 text-lg leading-relaxed text-charcoal-600">
+          PEMF, short for Pulsed Electromagnetic Field therapy, is a non-invasive way to support your
+          animal’s comfort, circulation, and recovery. Here’s what it is, what a session looks like,
+          and how it can help.
+        </p>
+        <div class="mt-8">
+          <Button href={withBase('/book')} size="lg">Book a Session</Button>
+        </div>
+      </div>
+      <div class="mx-auto w-full max-w-lg overflow-hidden rounded-2xl border-4 border-white shadow-xl ring-1 ring-sage-200">
+        <Image
+          src={siImg}
+          alt="A horse standing calmly in its stall during a PEMF session, with the MagnaWave unit on the ground"
+          widths={[500, 800, 1100]}
+          sizes="(max-width: 1024px) 90vw, 520px"
+          class="h-full w-full object-cover"
+          loading="eager"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT IS PEMF -->
+  <section class="mx-auto max-w-3xl px-5 py-14">
+    <SectionHeading eyebrow="The basics" title="What is PEMF?" />
+    <div class="mt-6 space-y-4 text-lg leading-relaxed text-charcoal-600">
+      <p>
+        Every cell in your horse’s body carries a small electrical charge. Pulsed Electromagnetic
+        Field therapy uses gentle, pulsing magnetic fields to encourage the body’s own natural
+        processes, the same kind of activity that supports healthy circulation and everyday
+        recovery.
+      </p>
+      <p>
+        In practice, it’s simple and completely non-invasive. Soft loops or pads are placed over the
+        areas you’d like to work on, and the device delivers a comfortable pulsing sensation. There
+        are no needles and nothing sharp — most horses find it deeply relaxing.
+      </p>
+    </div>
+  </section>
+
+  <PulseDivider />
+
+  <!-- WHAT A SESSION LOOKS LIKE -->
+  <section class="bg-white">
+    <div class="mx-auto max-w-6xl px-5 py-14 lg:py-20">
+      <div class="grid items-center gap-10 lg:grid-cols-2">
+        <div>
+          <SectionHeading eyebrow="At the barn" title="What a session looks like" />
+          <div class="mt-6 space-y-4 text-lg leading-relaxed text-charcoal-600">
+            <p>
+              Bree comes to you. Your horse stays in a familiar spot, their stall or the crossties,
+              while she works slowly and calmly over the body, letting your horse guide the pace.
+            </p>
+            <p>
+              You’ll often watch your horse settle within minutes: lowering the head, softening the
+              eye, licking and chewing, and yawning. Those are the classic signs of a horse letting
+              go of tension, and they’re a big part of why owners love this work.
+            </p>
+            <p>
+              A typical full-body session is unhurried and quiet. It’s a nice moment for your horse,
+              and a nice moment for you to see them relax.
+            </p>
+          </div>
+        </div>
+        <div class="mx-auto w-full max-w-sm">
+          <div class="arch-frame border-4 border-white shadow-xl ring-1 ring-sage-200">
+            <Image
+              src={backImg}
+              alt="PEMF loop resting along a horse’s topline during a calm session"
+              widths={[400, 600, 800]}
+              sizes="(max-width: 1024px) 90vw, 380px"
+              class="h-full w-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section class="mx-auto max-w-6xl px-5 py-14 lg:py-20">
+    <div class="grid gap-8 lg:grid-cols-2">
+      <div class="rounded-2xl border border-sage-200 bg-white p-8 shadow-sm">
+        <h2 class="font-display text-2xl font-semibold text-pine">Benefits for horses</h2>
+        <ul class="mt-5 space-y-3 text-charcoal">
+          {
+            horseBenefits.map((b) => (
+              <li class="flex items-start gap-3">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B07D4F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 shrink-0" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span>{b}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div class="rounded-2xl border border-sage-200 bg-white p-8 shadow-sm">
+        <h2 class="font-display text-2xl font-semibold text-pine">Benefits for dogs</h2>
+        <ul class="mt-5 space-y-3 text-charcoal">
+          {
+            dogBenefits.map((b) => (
+              <li class="flex items-start gap-3">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B07D4F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 shrink-0" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span>{b}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="bg-white">
+    <div class="mx-auto max-w-6xl px-5 py-14 lg:py-20">
+      <SectionHeading eyebrow="In the barn" title="A look at PEMF sessions" align="center" />
+      <div class="mt-12 grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4">
+        {
+          gallery.map((g) => (
+            <div class="overflow-hidden rounded-2xl border-4 border-white shadow-md ring-1 ring-sage-200">
+              <Image
+                src={g.src}
+                alt={g.alt}
+                widths={[300, 500, 700]}
+                sizes="(max-width: 640px) 45vw, (max-width: 1024px) 45vw, 260px"
+                class="aspect-[3/4] h-full w-full object-cover"
+              />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mx-auto max-w-3xl px-5 py-14 lg:py-20">
+    <SectionHeading eyebrow="Good to know" title="Common questions" align="center" />
+    <div class="mt-10 space-y-4">
+      {
+        faqs.map((f) => (
+          <details class="group rounded-2xl border border-sage-200 bg-white p-5 shadow-sm">
+            <summary class="flex cursor-pointer items-center justify-between gap-4 font-display text-lg font-semibold text-pine marker:content-['']">
+              {f.q}
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="shrink-0 text-saddle transition-transform group-open:rotate-45" aria-hidden="true">
+                <line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+            </summary>
+            <p class="mt-3 leading-relaxed text-charcoal-600">{f.a}</p>
+          </details>
+        ))
+      }
+    </div>
+
+    <!-- WELLNESS DISCLAIMER -->
+    <div class="mt-10 rounded-2xl border-l-4 border-saddle bg-sage-100 p-6">
+      <p class="leading-relaxed text-charcoal">
+        <strong class="text-pine">A note on wellness:</strong> PEMF is a complementary wellness service
+        and is not a substitute for veterinary care, diagnosis, or treatment. It works best alongside
+        your veterinarian, not in place of them. Always consult your vet for any medical concern.
+      </p>
+    </div>
+  </section>
+
+  <CtaBand title="Curious whether PEMF is right for your animal?" />
+</BaseLayout>

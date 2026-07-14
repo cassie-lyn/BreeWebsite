@@ -1,0 +1,181 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import PriceCard from '../components/PriceCard.astro';
+import PulseDivider from '../components/PulseDivider.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { SITE, withBase } from '../config';
+
+const title = 'Services & Pricing | Happy Horses RI';
+const description =
+  'PEMF session options and pricing for horses and dogs. Full-body sessions $75, targeted sessions $35 per body area, prepaid packages, and custom plans. Mobile service across Rhode Island and nearby MA.';
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- HEADER -->
+  <section class="bg-cream">
+    <div class="mx-auto max-w-4xl px-5 py-14 text-center lg:py-20">
+      <p class="text-sm font-bold uppercase tracking-widest text-saddle">Services &amp; Pricing</p>
+      <h1 class="mt-2 font-display text-4xl font-semibold text-pine sm:text-5xl">
+        Sessions built around your animal
+      </h1>
+      <p class="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-charcoal-600">
+        Every horse and dog is different, so every session is a little different too. Start with a
+        single session or build a routine — and if you’re not sure what’s right, just ask.
+      </p>
+    </div>
+  </section>
+
+  <!-- CORE SESSIONS -->
+  <section class="mx-auto max-w-5xl px-5 py-8">
+    <div class="grid gap-6 md:grid-cols-2">
+      <PriceCard
+        title="Full-Body Session"
+        price="$75"
+        priceNote="per session"
+        featured={true}
+        features={[
+          'Complete poll-to-tail treatment',
+          'Legs and face included',
+          'Unhurried, at your horse’s pace',
+          'Mobile, done right at your barn',
+        ]}
+      >
+        <p>
+          A thorough, whole-horse session covering everything from poll to tail, including the legs
+          and face. Ideal for overall wellness, relaxation, and recovery.
+        </p>
+      </PriceCard>
+
+      <PriceCard
+        title="Targeted Session"
+        price="$35"
+        priceNote="per body area, per session"
+        features={[
+          'Focused on the areas you choose',
+          'Great for a specific problem spot',
+          'A good add-on between full sessions',
+          'Mobile, done right at your barn',
+        ]}
+      >
+        <p>
+          A focused session priced at $35 for each preferred body area you’d like addressed.
+          Perfect when you want to zero in on a particular spot, or a couple of them.
+        </p>
+      </PriceCard>
+    </div>
+  </section>
+
+  <PulseDivider class="my-6" />
+
+  <!-- PACKAGES -->
+  <section class="mx-auto max-w-5xl px-5 py-8">
+    <SectionHeading
+      eyebrow="Prepaid packages"
+      title="Save with a session package"
+      align="center"
+    />
+    <p class="mx-auto mt-4 max-w-2xl text-center leading-relaxed text-charcoal-600">
+      Many horses do best with PEMF as part of a regular routine. Prepaid packages make that easy
+      and more affordable per session.
+    </p>
+
+    <div class="mt-10 grid gap-6 md:grid-cols-2">
+      {/* TODO: confirm pricing with Bree */}
+      <PriceCard
+        title="3-Session Package"
+        price="$210"
+        priceNote="prepaid"
+        features={[
+          'Three full-body sessions',
+          'A saving vs. booking individually',
+          'Scheduled to suit you and your horse',
+        ]}
+        note="Placeholder pricing, to be confirmed with Bree before launch."
+      >
+        <p>A short series to build on early progress and settle into a rhythm.</p>
+      </PriceCard>
+
+      {/* TODO: confirm pricing with Bree */}
+      <PriceCard
+        title="6-Session Package"
+        price="$400"
+        priceNote="prepaid"
+        features={[
+          'Six full-body sessions',
+          'Best per-session value',
+          'Ideal for an ongoing wellness routine',
+        ]}
+        note="Placeholder pricing, to be confirmed with Bree before launch."
+      >
+        <p>Our best value for owners who want to make PEMF a regular part of care.</p>
+      </PriceCard>
+    </div>
+  </section>
+
+  <!-- CUSTOM + CANINE -->
+  <section class="mx-auto max-w-5xl px-5 py-8">
+    <div class="grid gap-6 md:grid-cols-2">
+      <div class="rounded-2xl border border-sage-200 bg-white p-8 shadow-sm">
+        <h3 class="font-display text-2xl font-semibold text-pine">Custom packages</h3>
+        <p class="mt-3 leading-relaxed text-charcoal-600">
+          Have a specific goal in mind, like a horse coming back into work, a sensitive senior, or
+          a busy show schedule? Bree will personalize a plan of sessions to fit your animal’s
+          individual needs. Just reach out and we’ll map it out together.
+        </p>
+        <div class="mt-6">
+          <Button href={withBase('/book')} variant="outline">Ask about a custom plan</Button>
+        </div>
+      </div>
+
+      <div class="rounded-2xl border border-sage-200 bg-white p-8 shadow-sm">
+        <h3 class="font-display text-2xl font-semibold text-pine">Canine sessions</h3>
+        <p class="mt-3 leading-relaxed text-charcoal-600">
+          Dogs are welcome too. Because sessions vary quite a bit by size, temperament, and what
+          you’re hoping to help with, canine pricing is handled case by case — please contact Bree
+          for pricing and to talk through your dog’s needs.
+        </p>
+        <div class="mt-6">
+          <Button href={withBase('/book')} variant="outline">Contact for canine pricing</Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAVEL / SERVICE AREA -->
+  <section class="mx-auto max-w-5xl px-5 py-8">
+    <div class="rounded-3xl bg-pine px-8 py-10 text-center text-cream">
+      <h2 class="font-display text-2xl font-semibold text-cream sm:text-3xl">
+        Mobile service that comes to you
+      </h2>
+      <p class="mx-auto mt-4 max-w-2xl leading-relaxed text-cream/85">
+        {SITE.serviceArea} Not sure if you’re in range? Just ask — Bree is often happy to travel a
+        little farther for the right fit.
+      </p>
+      <div class="mt-6 flex flex-wrap justify-center gap-4">
+        <Button href={withBase('/book')} variant="cream">Book a Session</Button>
+        {
+          SITE.phoneHref && (
+            <a
+              href={SITE.phoneHref}
+              class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-cream/40 px-6 py-3 text-sm font-semibold text-cream transition-colors hover:bg-cream/10"
+            >
+              Call {SITE.phone}
+            </a>
+          )
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- WELLNESS DISCLAIMER -->
+  <section class="mx-auto max-w-3xl px-5 pb-14 pt-4">
+    <p class="text-center text-sm italic leading-relaxed text-charcoal-600">
+      PEMF is a complementary wellness service and is not a substitute for veterinary care. Please
+      consult your veterinarian for any medical concerns.
+    </p>
+  </section>
+
+  <CtaBand />
+</BaseLayout>

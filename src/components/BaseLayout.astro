@@ -1,0 +1,100 @@
+---
+import '../styles/global.css';
+import { SITE, withBase } from '../config';
+import Nav from './Nav.astro';
+import Footer from './Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Path (from site root) to the OG image. Defaults to the generated one. */
+  ogImage?: string;
+  /** Set true on the /thanks page etc. to keep it out of search results. */
+  noindex?: boolean;
+}
+
+const { title, description, ogImage = withBase('/og-image.jpg'), noindex = false } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImageUrl = new URL(ogImage, Astro.site).href;
+
+// LocalBusiness structured data (mobile service, no storefront). Service area is
+// a ~40mi GeoCircle around Providence, RI.
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: SITE.name,
+  description:
+    'MagnaWave-certified PEMF (Pulsed Electromagnetic Field) wellness therapy for horses and dogs. Mobile service across Rhode Island and nearby Massachusetts.',
+  image: ogImageUrl,
+  url: SITE.url,
+  // Contact fields are omitted while the config holds placeholders.
+  telephone: SITE.phoneHref ? SITE.phoneHref.replace('tel:', '') : undefined,
+  email: SITE.emailHref ? SITE.email : undefined,
+  priceRange: '$$',
+  founder: { '@type': 'Person', name: SITE.practitioner },
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Warwick',
+    addressRegion: 'RI',
+    addressCountry: 'US',
+  },
+  areaServed: {
+    '@type': 'GeoCircle',
+    geoMidpoint: {
+      '@type': 'GeoCoordinates',
+      latitude: SITE.geo.latitude,
+      longitude: SITE.geo.longitude,
+    },
+    geoRadius: String(SITE.geo.radiusMeters),
+  },
+  knowsAbout: ['PEMF therapy', 'Equine wellness', 'Canine wellness', 'MagnaWave'],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
+    <link rel="canonical" href={canonical} />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <meta name="theme-color" content="#2E4A3B" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body class="flex min-h-screen flex-col">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-pine focus:px-4 focus:py-2 focus:text-cream"
+      >Skip to content</a
+    >
+    <Nav />
+    <main id="main" class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

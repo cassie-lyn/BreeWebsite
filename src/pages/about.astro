@@ -1,0 +1,193 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../components/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import PulseDivider from '../components/PulseDivider.astro';
+import MagnaWaveBadge from '../components/MagnaWaveBadge.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { SITE, withBase } from '../config';
+
+import headshot from '../assets/photos/bree-headshot.jpg';
+import scottyImg from '../assets/photos/bree-scotty.jpg';
+import ridingImg from '../assets/photos/bree-riding-2.jpg';
+import horseImg from '../assets/photos/brees-horse.jpg';
+
+const title = 'About Briana Dolbec | Happy Horses RI';
+const description =
+  'Meet Briana “Bree” Dolbec, a MagnaWave-certified PEMF practitioner, longtime barn manager, and dressage instructor based in Warwick, RI, offering mobile wellness therapy for horses and dogs.';
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- INTRO -->
+  <section class="bg-cream">
+    <div class="mx-auto max-w-4xl px-5 py-14 text-center lg:py-20">
+      <div class="mx-auto h-32 w-32 overflow-hidden rounded-full border-4 border-white shadow-lg ring-1 ring-sage-200">
+        <Image
+          src={headshot}
+          alt="Portrait of Briana Dolbec"
+          widths={[128, 256]}
+          sizes="128px"
+          class="h-full w-full object-cover"
+          loading="eager"
+        />
+      </div>
+      <p class="mt-6 text-sm font-bold uppercase tracking-widest text-saddle">About</p>
+      <h1 class="mt-2 font-display text-4xl font-semibold text-pine sm:text-5xl">
+        Meet Briana Dolbec
+      </h1>
+      <p class="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-charcoal-600">
+        Dressage rider, instructor, barn manager, mom — and a MagnaWave-certified PEMF
+        practitioner bringing gentle, hands-on wellness therapy to horses and dogs across Rhode
+        Island and nearby Massachusetts.
+      </p>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="mx-auto max-w-6xl px-5 py-8">
+    <div class="grid items-center gap-10 lg:grid-cols-2">
+      <div class="mx-auto w-full max-w-sm">
+        <div class="arch-frame border-4 border-white shadow-xl ring-1 ring-sage-200">
+          <Image
+            src={scottyImg}
+            alt="Bree cheek-to-cheek with one of her horses in the barn aisle"
+            widths={[400, 600, 800]}
+            sizes="(max-width: 1024px) 90vw, 380px"
+            class="h-full w-full object-cover"
+          />
+        </div>
+      </div>
+
+      <div>
+        <h2 class="font-display text-3xl font-semibold text-pine">A lifelong love of animals</h2>
+        <div class="mt-5 space-y-4 text-lg leading-relaxed text-charcoal-600">
+          <p>
+            Animals have been part of Bree’s life for as long as she can remember. She grew up
+            surrounded by horses, dogs, cats, and birds, and that lifelong hands-on experience gave
+            her something you can’t learn from a manual — a genuine feel for each animal as an
+            individual, and an eye for the small changes that tell you how they’re really doing.
+          </p>
+          <p>
+            For the past five years, Bree has focused that intuition on PEMF therapy for horses.
+            Horses are her specialty and her first love, and she treats every session as a
+            conversation, reading the horse, adjusting to what they’re telling her, and letting them
+            settle into the work at their own pace.
+          </p>
+        </div>
+
+        <blockquote class="mt-8 border-l-4 border-saddle pl-5">
+          <p class="font-display text-xl font-medium italic leading-snug text-pine sm:text-2xl">
+            “Every animal gets the care I’d want for my own, and every owner gets treated the way
+            I’d want to be treated.”
+          </p>
+          <cite class="mt-3 block text-sm font-semibold not-italic uppercase tracking-widest text-saddle">
+            Bree
+          </cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <PulseDivider class="mt-12" />
+
+  <!-- CERTIFICATION -->
+  <section class="mx-auto max-w-6xl px-5 py-8">
+    <div class="grid items-center gap-8 rounded-3xl bg-white p-8 shadow-sm ring-1 ring-sage-200 sm:grid-cols-[auto_1fr] sm:p-10">
+      <div class="mx-auto shrink-0">
+        <MagnaWaveBadge size={132} />
+      </div>
+      <div>
+        <h2 class="font-display text-2xl font-semibold text-pine">MagnaWave certified</h2>
+        <p class="mt-3 text-lg leading-relaxed text-charcoal-600">
+          Bree is certified through MagnaWave, a leading name in PEMF for animals and people. Her
+          training covered safe, effective use of the technology and how to tailor a session to each
+          animal’s needs, always as a complement to good veterinary care and never a replacement
+          for it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHARING THE WORK + PHOTOS -->
+  <section class="mx-auto max-w-6xl px-5 py-12">
+    <div class="grid items-center gap-10 lg:grid-cols-2">
+      <div class="order-2 lg:order-1">
+        <h2 class="font-display text-3xl font-semibold text-pine">A horsewoman through and through</h2>
+        <div class="mt-5 space-y-4 text-lg leading-relaxed text-charcoal-600">
+          <p>
+            PEMF is one thread of a life spent around horses. For the past five years, Bree has
+            been the barn manager at Avastar Dressage, the person keeping a busy barn healthy and
+            happy, day in and day out. Living with horses at that level sharpens exactly what a
+            good PEMF practitioner needs most: knowing what’s normal for each horse, and catching
+            what isn’t.
+          </p>
+          <p>
+            She also teaches dressage lessons, and she cares for the rider as much as the horse.
+            Alongside position and technique, Bree works with her students on the mental side of
+            riding — quieting anxiety, building confidence, and helping riders genuinely feel good
+            in the saddle. She’s even welcomed Johnson &amp; Wales University students to the barn
+            for a hands-on PEMF demonstration.
+          </p>
+          <p>
+            Based in Pawtuxet Village in Warwick and riding out of Avastar Dressage in Lincoln,
+            Bree brings her equipment and her calm, patient approach directly to your barn.
+          </p>
+        </div>
+
+        <dl class="mt-8 grid grid-cols-2 gap-4">
+          <div class="rounded-xl bg-sage-100 p-4">
+            <dt class="text-xs font-bold uppercase tracking-wide text-pine">Based in</dt>
+            <dd class="mt-1 text-sm text-charcoal">{SITE.baseCity}</dd>
+          </div>
+          <div class="rounded-xl bg-sage-100 p-4">
+            <dt class="text-xs font-bold uppercase tracking-wide text-pine">Rides out of</dt>
+            <dd class="mt-1 text-sm text-charcoal">{SITE.ridesOutOf}</dd>
+          </div>
+          <div class="rounded-xl bg-sage-100 p-4">
+            <dt class="text-xs font-bold uppercase tracking-wide text-pine">PEMF experience</dt>
+            <dd class="mt-1 text-sm text-charcoal">5 years with horses</dd>
+          </div>
+          <div class="rounded-xl bg-sage-100 p-4">
+            <dt class="text-xs font-bold uppercase tracking-wide text-pine">Barn manager</dt>
+            <dd class="mt-1 text-sm text-charcoal">Avastar Dressage, 5 years</dd>
+          </div>
+          <div class="rounded-xl bg-sage-100 p-4">
+            <dt class="text-xs font-bold uppercase tracking-wide text-pine">Teaching</dt>
+            <dd class="mt-1 text-sm text-charcoal">Dressage &amp; rider-confidence lessons</dd>
+          </div>
+          <div class="rounded-xl bg-sage-100 p-4">
+            <dt class="text-xs font-bold uppercase tracking-wide text-pine">Service area</dt>
+            <dd class="mt-1 text-sm text-charcoal">RI &amp; nearby MA</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="order-1 grid grid-cols-2 gap-4 lg:order-2">
+        <div class="overflow-hidden rounded-2xl border-4 border-white shadow-lg ring-1 ring-sage-200">
+          <Image
+            src={ridingImg}
+            alt="Bree riding in the arena"
+            widths={[400, 600]}
+            sizes="(max-width: 1024px) 45vw, 300px"
+            class="h-full w-full object-cover"
+          />
+        </div>
+        <div class="mt-8 overflow-hidden rounded-2xl border-4 border-white shadow-lg ring-1 ring-sage-200">
+          <Image
+            src={horseImg}
+            alt="One of Bree’s grey horses wearing a pair of competition ribbons"
+            widths={[400, 600]}
+            sizes="(max-width: 1024px) 45vw, 300px"
+            class="h-full w-full object-cover"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="pb-8 text-center">
+    <Button href={withBase('/pemf')} variant="outline">Learn about PEMF therapy</Button>
+  </div>
+
+  <CtaBand title="Let’s help your horse feel their best" />
+</BaseLayout>
