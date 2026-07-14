@@ -23,7 +23,10 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - run: npm ci
+      # npm install (not ci): the lockfile is generated on Windows and npm has a
+      # long-standing bug where other-platform optional deps (sharp's Linux/WASM
+      # builds) are omitted, which makes strict `npm ci` fail on the Linux runner.
+      - run: npm install --no-audit --no-fund
       - run: npm run build
         env:
           # GitHub Pages serves project sites under /<repo>, so the build needs
