@@ -35,13 +35,23 @@ frames (`.arch-frame`), pulse-wave divider, "Now Accepting New Clients" pill.
 - **Testimonials** on Home are placeholders. Search `PLACEHOLDER TESTIMONIALS`.
 - ~~MagnaWave badge~~ RESOLVED: official seal in use (`src/assets/magnawave-seal.png`,
   180x180 source, don't render larger than 180).
-- **No custom domain yet** — `site`/`url` = `https://breewebsite.pages.dev`.
+- **Contact info is PLACEHOLDER** (401-XXX-XXXX / "Email coming soon") — Bree is
+  deciding between personal info and Google Voice + business email. Fill the four
+  values in `src/config.ts`; links and JSON-LD re-enable automatically.
+- **No custom domain yet** — GitHub Pages URL for now; default `site` still
+  `https://breewebsite.pages.dev` for a future root-domain host.
 - **Video** `PEMF_VID.MOV` omitted (no ffmpeg on build machine). README §5 has the
   conversion command to add it later.
 
 ## Deploy
-Cloudflare Pages, auto-deploy on push to `main` of `cassie-lyn/BreeWebsite`.
-Build `npm run build`, output `dist`. Details in README §3.
+**Live now: GitHub Pages** at https://cassie-lyn.github.io/BreeWebsite/ —
+auto-deploys on push to `main` via `.github/workflows/deploy.yml`. The repo is
+PUBLIC (history was squashed clean before flipping visibility, so real contact
+info never appears in it — keep it that way). Internal links go through
+`withBase()` in `src/config.ts`; site/base come from `SITE_URL`/`BASE_PATH` env
+vars (set in the workflow), so a later move to Cloudflare Pages or a custom
+domain (root path) needs no code changes. CI uses `npm install`, not `npm ci`
+(Windows-generated lockfile omits Linux optional deps of sharp).
 
 ## Copy guidelines
 Warm + professional for horse people. Not girly, not rustic-cowboy. Always frame
